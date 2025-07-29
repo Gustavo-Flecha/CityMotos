@@ -1,0 +1,6 @@
+# Ignorar todo excepto el child theme
+*.log
+node_modules/
+.DS_Store
+wp-content/uploads/
+
