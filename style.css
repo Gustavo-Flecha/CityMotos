@@ -1,12 +1,15 @@
 /*
-Theme Name:     Storefront Child - Citymotos
-Template:       storefront
-Version:        1.0
-Author:         TripleFlecha
+Theme Name: CityMotos Storefront Child
+Theme URI: https://github.com/Gustavo-Flecha/CityMotos
+Description: Tema hijo personalizado con efecto glass y estructura modular.
+Author: Gustavo Rodriguez / Triple Flecha
+Author URI: https://github.com/Gustavo-Flecha
+Template: storefront
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: citymotos-child
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-@import url("css/base.css");
-@import url("css/layout.css");
-@import url("css/components.css");
-@import url("css/woocommerce.css");
-@import url("css/aero.css");

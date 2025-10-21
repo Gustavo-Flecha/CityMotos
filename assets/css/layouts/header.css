@@ -1,0 +1,114 @@
+
+/* Menú principal: menos padding y fuente más pequeña */
+.main-navigation ul li a {
+  border-radius: 6px;
+  transition: background .18s, transform .08s;
+}
+
+/* Menú: estado hover sutil tipo botón */
+.main-navigation ul li a:hover,
+.main-navigation ul li a:focus {
+  background: rgba(255, 255, 255, 0.87);
+  transform: translateY(-1px);
+}
+
+/* Buscador grande y con estilo */
+.site-search input[type="search"],
+.widget_search input[type="search"] {
+  z-index: 3;
+  min-height: 50px;
+  background: #fff;
+  border: 1px solid #dadce0;
+  box-shadow: 0px 3px 10px 0px rgba(31, 31, 31, 0.08);
+  border-radius: 26px;
+}
+/* Ancho del buscador */
+.site-search {
+  min-width: 50%;
+}
+ /* disposición del header */
+.col-full {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#storefront-primary-navigation {
+  padding: 0;
+  min-height: auto;
+  height: auto;
+}
+
+/* Reducir padding del menú principal */
+#site-navigation ul.menu > li > a {
+  padding: 0.2em 1em;
+}
+#site-header-cart li a{
+  padding: 0em 0;
+}
+
+/* Breadcrumbs — estilo botones AeroGlass */
+.woocommerce-breadcrumb,
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.woocommerce-breadcrumb a,
+.breadcrumb a {
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 6px;
+  color: #222;
+}
+
+/* aplicar estilo AeroGlass a los links dentro de breadcrumb */
+.woocommerce-breadcrumb a,
+.breadcrumb a {
+  background: linear-gradient(#f3f3f3, #e7e7e7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Espacio antes de productos — reducir */
+.woocommerce .products {
+  margin-top: 18px;
+}
+
+/* Si la plantilla tiene .page-header o .page-title, reducir margen */
+.page-header,
+.page-title {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+
+
+/* ---------------RESPONSIVE CSS------------------------------ */
+
+/* Ajuste responsive (pantallas pequeñas) */
+@media (max-width: 768px) {
+  .site-search input[type="search"] {
+    width: 80vw;
+    max-width: none;
+  }
+
+  .site-title a {
+    font-size: 22px;
+  }
+
+  .main-navigation ul li a {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  header.site-header {
+    padding-top: 0.5em;
+  }
+
+}
