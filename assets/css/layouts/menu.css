@@ -1,0 +1,267 @@
+/*---------------- Menú CityMotos--------------*/
+
+/* Título "Menú" */
+.citymotos-category-menu .menu-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Ajuste de la lista */
+.citymotos-category-menu .category-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Cada elemento */
+.citymotos-category-menu .category-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    transition: transform 0.15s ease, background 0.15s ease;
+    padding: 6px 8px;
+    border-radius: 10px;
+}
+
+/* Hover suave */
+.citymotos-category-menu .category-list li:hover {
+    background: rgba(243, 85, 12, 0.945);
+    transform: translateX(4px);
+}
+
+/* Iconos */
+.citymotos-category-menu img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* Links */
+.citymotos-category-menu a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #eb8b03;
+    font-weight: 500;
+}
+
+/* Hover del link */
+.citymotos-category-menu a:hover {
+    color: #eb5f02ec;
+}
+
+/* contenedor de la categoría */
+.citymotos-category-menu {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    width: 240px;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+}
+
+/* título */
+.citymotos-category-menu .menu-title {
+    margin: 0 0 15px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    opacity: 0.9;
+}
+
+/*Eliminar puntos de categorías padre */
+.accordion-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* botón acordeón */
+.accordion-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 10px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.cat-item:hover .subcat-list {
+    max-height: 300px;
+    opacity: 1;
+    background: rgba(182, 174, 174, 0.25);
+}
+
+.accordion-toggle img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.accordion-toggle span {
+    flex: 1;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Flechita */
+.accordion-toggle .arrow {
+    transition: transform 0.2s ease;
+}
+
+/* Cuando está abierto */
+.cat-item.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* --------subcategorías------- */
+.subcat-list {
+    margin: 0;
+    padding: 0 0 0 40px;
+    list-style: none;
+    display: none;
+    /* oculto por defecto */
+}
+
+.subcat-list li {
+    margin-bottom: 6px;
+}
+
+.subcat-list a {
+    font-size: 14px;
+    opacity: 0.85;
+    text-decoration: none;
+    color: #222;
+}
+
+.subcat-list a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.subcategory-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.subcat-item img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 8px;
+    opacity: 0.85;
+}
+
+/* -------Menú deslizante desde la izquierda-------*/
+
+/* Contenedor general del menú */
+.citymotos-category-menu {
+    transform: translateX(-100%);
+    transition: transform 0.33s ease;
+}
+
+/* Cuando está visible */
+.citymotos-category-menu.active {
+    transform: translateX(0);
+}
+
+/* Overlay oscuro detrás del menú */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 900;
+}
+
+/* Cuando está activo */
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Wrapper general del menú + handle */
+.citymotos-menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 50px;
+    /* parte visible siempre */
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Barrita vertical */
+.menu-handle {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 17px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: #000000;
+    background: #eb8b03;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.55);
+    padding: 18px 6px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.menu-handle:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 140, 0, 0.45),
+            rgba(255, 120, 0, 0.22));
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.7),
+        0 0 18px rgba(255, 150, 0, 0.65), 0 0 30px rgba(255, 150, 0, 0.35);
+}
+
+/* Ajustamos tu menú para convivir con el handle */
+.citymotos-category-menu {
+    position: fixed;
+    top: 200px;
+    width: auto;
+    padding: 15px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+}
+
+/* Menú visible */
+.citymotos-category-menu.active {
+    transform: translateX(30px);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        8px 0 25px rgba(0, 0, 0, 0.25), 0 0 28px rgba(0, 0, 0, 0.35);
+}
