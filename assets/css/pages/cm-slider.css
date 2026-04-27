@@ -1,0 +1,166 @@
+/* Slider principal con hotspots y tooltips para CityMotos */
+
+.cm-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.cm-slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.cm-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.cm-slide img {
+  display: block;
+  margin-inline: auto;
+  width: 55vw;
+  object-fit: contain;
+}
+
+
+/* Hostpots (puntos interactivos) */
+
+.cm-hotspot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #eb8b03;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 2;
+
+  border: 2px solid #eb8b03;
+  box-shadow: 0 0 8px rgba(235, 139, 3, 0.6);
+}
+
+
+/* Anillos */
+
+.cm-hotspot::before,
+.cm-hotspot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #eb8b03;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.7;
+}
+
+.cm-hotspot::before {
+  animation: ringPulse 2.5s infinite;
+}
+
+.cm-hotspot::after {
+  animation: ringPulse 2.5s infinite;
+  animation-delay: 1.2s;
+}
+
+
+/* Animación de pulso como anillos */
+
+@keyframes ringPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+
+  80% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+
+/* Hover del hotspot */
+
+.cm-hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 106, 0, 1);
+}
+
+/* Opcional: pausar animación al hover */
+.cm-hotspot:hover::before,
+.cm-hotspot:hover::after {
+  animation-play-state: paused;
+}
+
+
+/* Tooltip  */
+.cm-tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+}
+
+/* Mostrar tooltip */
+.cm-hotspot:hover .cm-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Flechita */
+.cm-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.75) transparent transparent transparent;
+}
+
+
+/* Botones */
+
+.cm-prev,
+.cm-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #eb8b03;
+  backdrop-filter: blur(10px);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: white;
+}
+
+.cm-prev {
+  left: 10px;
+}
+
+.cm-next {
+  right: 10px;
+}

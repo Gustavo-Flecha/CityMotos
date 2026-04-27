@@ -6,13 +6,7 @@ function storefront_child_enqueue_styles()
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
     wp_enqueue_style('child-main', get_stylesheet_directory_uri() . '/assets/css/main.css', ['parent-style'], '1.0');
 };
-// Carga scripts del child theme
-add_action('wp_enqueue_scripts', 'storefront_child_enqueue_scripts');
-function storefront_child_enqueue_scripts()
-{
-    wp_enqueue_script('child-main-js', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery'], '1.0', true);
-    wp_script_add_data('child-main-js', 'type', 'module');
-}
+
 
 //-----------------------------------------Menu---------------------------------//
 
@@ -57,9 +51,6 @@ function citymotos_category_menu_widget()
         $thumb_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
         $icon = $thumb_id ? wp_get_attachment_url($thumb_id) : '';
 
-        if (!$icon) {
-            $icon = get_stylesheet_directory_uri() . '/assets/default-icon.png';
-        }
 
         // Subcategorías
         $subcats = get_terms([
@@ -70,7 +61,7 @@ function citymotos_category_menu_widget()
 
         echo '<li class="cat-item">';
 
-        // 🔥 BOTÓN CON LINK AL PADRE
+        //  Boton acordeón categoría padre
         echo '<a class="accordion-toggle" href="' . esc_url(get_term_link($cat)) . '">';
         echo '  <img src="' . esc_url($icon) . '" alt="' . esc_attr($cat->name) . '">';
         echo '  <span>' . esc_html($cat->name) . '</span>';
@@ -83,19 +74,17 @@ function citymotos_category_menu_widget()
 
             foreach ($subcats as $sub) {
 
+                add_action('storefront_before_content', 'citymotos_menu_overlay', 0);
                 // Imagen subcategoría
                 $sub_thumb_id = get_term_meta($sub->term_id, 'thumbnail_id', true);
                 $sub_icon = $sub_thumb_id ? wp_get_attachment_url($sub_thumb_id) : '';
-
-                if (!$sub_icon) {
-                    $sub_icon = get_stylesheet_directory_uri() . '/assets/default-icon.png';
-                }
 
                 echo '<li class="subcat-item">';
                 echo '  <a href="' . esc_url(get_term_link($sub)) . '">';
                 echo '      <img src="' . esc_url($sub_icon) . '" alt="' . esc_attr($sub->name) . '">';
                 echo '      <span>' . esc_html($sub->name) . '</span>';
                 echo '  </a>';
+                add_action('storefront_before_content', 'citymotos_menu_overlay', 0);
                 echo '</li>';
             }
 
@@ -105,11 +94,9 @@ function citymotos_category_menu_widget()
         echo '</li>';
     }
 
-
     echo '</ul>';
     echo '</div>';
 }
-
 
 // Función para abrir/cerrar el acordeón
 function citymotos_enqueue_scripts()
@@ -124,3 +111,144 @@ function citymotos_enqueue_scripts()
 }
 add_action('wp_enqueue_scripts', 'citymotos_enqueue_scripts');
 add_action('storefront_before_content', 'citymotos_category_menu_widget', 1);
+
+
+
+//-----------------------------------------Checkout minimalista---------------------------------//
+
+add_filter('woocommerce_checkout_fields', 'cm_checkout_minimalista');
+
+function cm_checkout_minimalista($fields)
+{
+
+    $billing = array(
+        'billing_first_name' => $fields['billing']['billing_first_name'],
+        'billing_email'      => $fields['billing']['billing_email'],
+    );
+
+    $fields['billing'] = $billing;
+
+    return $fields;
+}
+
+
+// ------------------------------Slider para homepage con imágenes hotspots-------------------------//
+
+function cm_slider_scripts()
+{
+    wp_enqueue_script(
+        'citymotos-slider',
+        get_stylesheet_directory_uri() . '/assets/js/cm-slider.js',
+        array(),
+        false,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'cm_slider_scripts');
+
+
+
+function cm_slider_shortcode() {
+
+    ob_start();
+
+    /**
+     * Acá definimos:
+     * - imagen
+     * - hotspots (posición + slug de categoría)
+     */
+
+    $slides = [
+
+        [
+            'img' => '/wp-content/uploads/2026/04/moto.webp',
+            'alt' => 'Moto',
+            'hotspots' => [
+                ['top' => '60%', 'left' => '80%', 'cat' => 'Cubiertas y Llantas'],
+                ['top' => '30%', 'left' => '65%', 'cat' => 'Parte Eléctrica'],
+                ['top' => '55%', 'left' => '55%', 'cat' => 'Repuestos Motos'],
+                ['top' => '65%', 'left' => '30%', 'cat' => 'Transmisión'],
+                ['top' => '70%', 'left' => '50%', 'cat' => 'Aceites 4T'],
+            ]
+        ],
+
+        [
+            'img' => '/wp-content/uploads/2026/04/motosierra.webp',
+            'alt' => 'Motosierra',
+            'hotspots' => [
+                ['top' => '60%', 'left' => '20%', 'cat' => 'Espadas y cadenas'],
+                ['top' => '65%', 'left' => '65%', 'cat' => 'Repuestos Motosierra'],
+                ['top' => '35%', 'left' => '70%', 'cat' => 'Motosierras'],
+            ]
+        ],
+
+        [
+            'img' => '/wp-content/uploads/2026/04/motoguadania.webp',
+            'alt' => 'Motoguadaña',
+            'hotspots' => [
+                ['top' => '40%', 'left' => '20%', 'cat' => 'Cabezal y Cuchillas'],
+                ['top' => '60%', 'left' => '75%', 'cat' => 'Motoguadañas'],
+                ['top' => '75%', 'left' => '80%', 'cat' => 'Aceites 2T'],
+                ]
+        ]
+
+    ];
+
+    echo '<div class="cm-slider">';
+    echo '<div class="cm-slides">';
+
+    /**
+     *  Recorremos cada slide
+     */
+    foreach ($slides as $index => $slide) {
+
+        // Primer slide activo
+        $active = ($index === 0) ? ' active' : '';
+
+        echo '<div class="cm-slide' . $active . '">';
+
+            // Imagen
+            echo '<img src="' . home_url($slide['img']) . '">';
+
+            /**
+             * Hotspots: por cada hotspot, traemos la categoría por slug, 
+             * obtenemos su link y nombre para tooltip, 
+             * y generamos el enlace posicionado sobre la imagen.
+             */
+            foreach ($slide['hotspots'] as $hotspot) {
+
+                // Traemos la categoría por SLUG definido en el array
+                $term = get_term_by('slug', $hotspot['cat'], 'product_cat');
+
+                // Si existe la categoría seguimos, sino no hacemos nada
+                if ($term) {
+
+                    //  Link de la categoría
+                    $link = get_term_link($term);
+
+                    // Nombre de la categoría (para tooltip)
+                    $name = $term->name;
+
+                    echo '<a href="' . esc_url($link) . '" 
+                            class="cm-hotspot" 
+                            style="top:' . $hotspot['top'] . '; left:' . $hotspot['left'] . ';">
+                            <span class="cm-tooltip">' . esc_html($name) . '</span>
+                          </a>';
+                }
+            }
+
+        echo '</div>';
+    }
+
+    echo '</div>';
+
+    echo '<button class="cm-prev">‹</button>';
+    echo '<button class="cm-next">›</button>';
+
+    echo '</div>';
+
+    return ob_get_clean();
+}
+
+add_shortcode('cm_slider', 'cm_slider_shortcode');
+
