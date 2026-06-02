@@ -19,6 +19,7 @@ La instalación estándar de WooCommerce no cubría varios requerimientos del ne
 * Mejor experiencia de búsqueda para vendedores y clientes.
 * Presentación visual adaptada al catálogo de motocicletas.
 * Optimización del proceso de compra.
+
 * Integración con herramientas desarrolladas específicamente para la operación diaria.
 
 ## Solución
@@ -33,6 +34,8 @@ Se desarrolló un Child Theme personalizado sobre WooCommerce incorporando funci
 * Reorganización de elementos de navegación.
 * Accesos directos a secciones importantes.
 
+<img width="433" height="447" alt="Captura1" src="https://github.com/user-attachments/assets/a9ea2d01-7385-4220-8e8f-22ee025e41dd" />
+
 ### Personalización WooCommerce
 
 * Modificaciones de plantillas.
@@ -45,6 +48,8 @@ Se desarrolló un Child Theme personalizado sobre WooCommerce incorporando funci
 * Slider promocional.
 * Hotspots interactivos.
 * Componentes visuales orientados al catálogo de repuestos.
+
+<img width="571" height="514" alt="Captura" src="https://github.com/user-attachments/assets/5e84baf0-606a-42a0-9df4-409271d298fe" />
 
 ### Integración con Herramientas Internas
 
@@ -78,8 +83,11 @@ Las modificaciones se realizan utilizando:
 ## Caso Real
 
 Este proyecto se encuentra basado en necesidades reales de operación comercial y fue desarrollado para acompañar la gestión diaria de CityMotos.
+<img width="1600" height="1200" alt="WhatsApp Image 2026-06-02 at 12 32 33" src="https://github.com/user-attachments/assets/e106e1be-866f-40a1-9974-230b59a6aa69" />
 
 El objetivo principal fue reducir fricción en la navegación, facilitar el acceso a productos y mejorar la experiencia tanto para clientes como para vendedores.
+<img width="1600" height="1200" alt="WhatsApp Image 2026-06-02 at 12 32 34" src="https://github.com/user-attachments/assets/ab86b611-428a-4f1b-8c07-12c3592a39eb" />
+
 
 ## Aprendizajes
 
