@@ -1,0 +1,254 @@
+/* Mejoras de densidad móvil para WooCommerce y Storefront. */
+
+@media (max-width: 767px) {
+
+  .home.blog .site-header, .home.page:not(.page-template-template-homepage) 
+  .site-header,.home.post-type-archive-product .site-header{ 
+    margin-bottom: 0em !important; 
+}
+
+  .site-main {
+    margin-bottom: 0;
+  }
+
+  .col-full {
+    display: block;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  /* Productos */
+  .woocommerce ul.products,
+  ul.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 8px;
+    margin-top: 8px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .woocommerce ul.products li.product,
+  ul.products li.product {
+    flex: 0 0 calc(50% - 4px);
+    max-width: calc(50% - 4px);
+    float: none !important;
+    clear: none !important;
+    width: auto !important;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  /* Elimina el clearfix de Storefront */
+  .woocommerce ul.products::before,
+  .woocommerce ul.products::after,
+  ul.products::before,
+  ul.products::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  ul.products li.product img,
+  ul.products li.product .woocommerce-LoopProduct-link img {
+    width: 100%;
+    max-height: 142px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    margin-bottom: 7px;
+    background: #fff;
+  }
+
+  ul.products li.product .woocommerce-loop-product__title,
+  ul.products li.product h2,
+  ul.products li.product h3 {
+    min-height: 2.7em;
+    margin: 0 0 4px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.32;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  ul.products li.product .price {
+    margin-bottom: 6px;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  ul.products li.product .button,
+  ul.products li.product .added_to_cart {
+    min-height: 34px;
+    padding: 7px 9px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .woocommerce-pagination {
+    width: 100%;
+    margin: 14px 0 4px;
+    text-align: center;
+  }
+
+  .storefront-sorting:first-of-type .woocommerce-pagination {
+    display: none;
+  }
+
+  .aero-panel,
+  .aero--padded {
+    padding: 10px 12px;
+  }
+
+  .cm-slider {
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .cm-slide img {
+    width: min(92vw, 360px);
+    max-height: 220px;
+  }
+
+  .cm-prev,
+  .cm-next {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .citymotos-category-menu {
+    top: 76px;
+    left: 0;
+    width: min(82vw, 300px);
+    height: min(72vh, 540px);
+    padding: 12px;
+  }
+
+  .citymotos-category-menu .menu-title {
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .accordion-toggle {
+    min-height: 42px;
+    padding: 7px 8px;
+  }
+
+  .accordion-toggle img,
+  .subcat-item img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .subcat-list {
+    margin: 2px 0 6px;
+    padding-left: 28px;
+  }
+
+  .subcat-list li {
+    margin-bottom: 4px;
+  }
+
+  .menu-handle {
+    padding: 15px 2px;
+    border-radius: 15px;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  ul.products::before,
+  ul.products::after {
+    content: " ";
+    display: table;
+  }
+  .citymotos-menu-wrapper{
+    width: 30px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .woocommerce-result-count,
+  .woocommerce-ordering {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .woocommerce-ordering select {
+    min-height: 36px;
+    font-size: 13px;
+  }
+
+  ul.products li.product img,
+  ul.products li.product .woocommerce-LoopProduct-link img {
+    max-height: 128px;
+  }
+
+  .single-product div.product {
+    padding-top: 0;
+  }
+
+  .single-product div.product .woocommerce-product-gallery,
+  .single-product div.product .summary {
+    margin-bottom: 14px;
+  }
+
+  .single-product div.product .woocommerce-product-gallery img {
+    max-height: 260px;
+    object-fit: contain;
+  }
+
+  .single-product div.product .product_title {
+    margin-bottom: 8px;
+    font-size: clamp(16px, 4.2vw, 20px);
+    line-height: 1.16;
+  }
+
+  .single-product div.product p.price,
+  .single-product div.product span.price {
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .single-product div.product form.cart {
+    margin-bottom: 14px;
+    padding-top: 0;
+  }
+
+  .single-product div.product form.cart .quantity {
+    margin-right: 8px;
+  }
+
+  .single-product div.product .single_add_to_cart_button {
+    min-height: 42px;
+    padding: 10px 14px;
+    line-height: 1.2;
+  }
+
+  .single-product div.product .woocommerce-tabs {
+    padding-top: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  ul.products li.product img,
+  ul.products li.product .woocommerce-LoopProduct-link img {
+    max-height: 116px;
+  }
+
+  ul.products li.product .woocommerce-loop-product__title,
+  ul.products li.product h2,
+  ul.products li.product h3 {
+    font-size: 13px;
+  }
+}

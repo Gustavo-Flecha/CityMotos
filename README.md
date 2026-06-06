@@ -110,3 +110,5 @@ Durante este proyecto trabajé con:
 ## Estado del Proyecto
 
 Proyecto utilizado en un entorno real y en evolución continua según las necesidades operativas del negocio.
+
+**Desarrollado por Gustavo Emmanuel Rodriguez de Oliveira

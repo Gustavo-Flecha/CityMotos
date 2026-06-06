@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = slider.querySelector(".cm-next");
   const prevBtn = slider.querySelector(".cm-prev");
 
+  if (!slidesContainer || !slides.length || !nextBtn || !prevBtn) return;
+
   let index = 0;
   const total = slides.length;
 

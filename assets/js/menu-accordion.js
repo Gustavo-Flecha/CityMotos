@@ -22,18 +22,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("menu-overlay");
 
     if (btn && menu && overlay) {
+        btn.setAttribute("aria-expanded", "false");
 
         // Abrir / cerrar desde el botón
         btn.addEventListener("click", (e) => {
             e.stopPropagation(); // evita que el clic del botón cuente como clic "afuera"
             menu.classList.toggle("active");
             overlay.classList.toggle("active");
+            btn.setAttribute("aria-expanded", menu.classList.contains("active") ? "true" : "false");
         });
 
         // Cerrar al hacer clic en el overlay
         overlay.addEventListener("click", () => {
             menu.classList.remove("active");
             overlay.classList.remove("active");
+            btn.setAttribute("aria-expanded", "false");
         });
 
         // Cerrar si el clic es afuera del menú
@@ -45,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ) {
                 menu.classList.remove("active");
                 overlay.classList.remove("active");
+                btn.setAttribute("aria-expanded", "false");
             }
         });
     }
@@ -56,11 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("menu-overlay");
 
     if (menu && handle && overlay) {
+        handle.setAttribute("aria-expanded", "false");
 
         const toggleMenu = () => {
-            const isActive = menu.classList.contains("active");
             menu.classList.toggle("active");
             overlay.classList.toggle("active");
+            handle.setAttribute("aria-expanded", menu.classList.contains("active") ? "true" : "false");
         };
 
         // abrir/cerrar desde la barrita vertical
@@ -73,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.addEventListener("click", () => {
             menu.classList.remove("active");
             overlay.classList.remove("active");
+            handle.setAttribute("aria-expanded", "false");
         });
     }
 });
